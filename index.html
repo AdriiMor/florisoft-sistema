@@ -1,91 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florisoft</title>
+    <style>
+        body {
+            font-family: "Georgia", serif; /* Fuente más formal */
+            margin: 20px;
+            line-height: 1.6; /* Mejor legibilidad */
+        }
+        h1 {
+            font-size: 22px; /* Títulos un poco más pequeños */
+            margin-bottom: 10px;
+            font-weight: bold; /* Negrita para resaltar títulos */
+        }
+        p {
+            text-align: justify; /* Alineación justificada para estilo formal */
+            margin-bottom: 20px;
+            font-size: 14px; /* Texto más pequeño */
+        }
+        ul {
+            list-style-type: disc; /* Estilo de viñeta formal */
+            padding-left: 40px;
+            font-size: 14px; /* Texto más pequeño */
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #0056b3; /* Color más formal para enlaces */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        table img {
+            width: 150px; /* Tamaño más pequeño para las imágenes */
+            height: auto;
+            border-radius: 50%; /* Para hacer las imágenes redondas */
+        }
+        td {
+            padding: 10px;
+            font-size: 14px; /* Texto más pequeño en la tabla */
+        }
+    </style>
 </head>
 <body>
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Florisoft</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 20px;
-            }
-            h1 {
-                font-size: 24px;
-                margin-bottom: 10px;
-            }
-            p {
-                text-align: justify;
-                margin-bottom: 20px;
-            }
-        </style>
-    </head>
-    <body>
-    
-        <h1>Florisoft</h1>
-        <p>Busca optimizar el proceso de compra y entrega de flores, haciendo que sea más eficiente y agradable tanto para los clientes como para la floristería.</p>
-    
-        <h1>Problematica del proyecto</h1>
-        <p>La floristería enfrenta problemas al gestionar los pedidos de los clientes. Muchas veces, hay confusiones en la toma de pedidos, lo que lleva a errores y demoras. 
-        Además, los clientes quieren personalizar sus ramos, pero no siempre pueden hacerlo fácilmente. También hay dificultades para mantener un control adecuado del inventario, 
-        lo que puede resultar en falta de productos o sobreventas. La comunicación sobre las entregas no es clara, lo que provoca retrasos y problemas con las direcciones. 
-        Por último, la falta de opciones de pago cómodas puede desanimar a los clientes. Estos problemas afectan la satisfacción del cliente y la eficiencia del negocio.</p>
-    
-        <h1>Objetivo del proyecto</h1>
-        <p>Desarrollar un sistema integral que optimice la gestión de pedidos en la floristería, mejorando la experiencia del cliente a través de la personalización de ramos, 
-        un control eficiente del inventario, una comunicación clara sobre las entregas y opciones de pago seguras, lo que en última instancia aumentará la satisfacción del cliente 
-        y la eficiencia operativa del negocio.</p>
-    
-        <h1>Subsistemas del proyecto</h1>
-        <p>El desarrollo del sistema principal de la florería se realizó a través de un análisis de requisitos con los interesados, identificando funcionalidades clave como gestión de pedidos, 
-        inventario, diseño floral, ventas y distribución.</p>
+
+    <h1>Sistema de Gestión de Pedidos (SGP)</h1>
+    <p>El Sistema de Gestión de Pedidos (SGP) busca optimizar el proceso de compra y entrega de flores, haciéndolo más eficiente y agradable tanto para los clientes como para la floristería.</p>
+
+    <h1>Problemática del proyecto</h1>
+    <p>La floristería enfrenta problemas al gestionar los pedidos de los clientes. Muchas veces hay confusiones en la toma de pedidos, lo que lleva a errores y demoras. Además, los clientes quieren personalizar sus ramos, pero no siempre pueden hacerlo fácilmente. También hay dificultades para mantener un control adecuado del inventario, lo que puede resultar en falta de productos o sobreventas. La comunicación sobre las entregas no es clara, lo que provoca retrasos y problemas con las direcciones. Por último, la falta de opciones de pago cómodas puede desanimar a los clientes. Estos problemas afectan la satisfacción del cliente y la eficiencia del negocio.</p>
+
+    <h1>Objetivo del proyecto</h1>
+    <p>El objetivo es desarrollar un sistema integral que optimice la gestión de pedidos en la floristería, mejorando la experiencia del cliente mediante la personalización de ramos, un control eficiente del inventario, una comunicación clara sobre las entregas y opciones de pago seguras. Esto aumentará la satisfacción del cliente y la eficiencia operativa del negocio.</p>
+
+    <h1>Subsistemas del proyecto</h1>
+    <p>El desarrollo del sistema principal de la florería se realizó a través de un análisis de requisitos con los interesados, identificando funcionalidades clave como gestión de pedidos, inventario, diseño floral, ventas y distribución.</p>
 
     <ul>
         <li><a href="./subsistemas/pedidos.html">Pedidos</a></li>
-        <li><a href="./subsistemas/proveedores.html">Proovedores</a></li>
-        <li><a href="./subsistemas/catalogo.html">Catalogo</a></li>
+        <li><a href="./subsistemas/proveedores.html">Proveedores</a></li>
+        <li><a href="./subsistemas/catalogo.html">Catálogo</a></li>
         <li><a href="./subsistemas/inventario.html">Inventario</a></li>
         <li><a href="./subsistemas/clientes.html">Clientes</a></li>
         <li><a href="./subsistemas/ventas.html">Ventas</a></li>
         <li><a href="./subsistemas/marketing.html">Marketing</a></li>
         <li><a href="./subsistemas/personal.html">Personal</a></li>
         <li><a href="./subsistemas/entregas.html">Entregas</a></li>
-        
     </ul>
 
     <h1>Miembros del proyecto</h1>
     <!-- La sección Miembros del proyecto incluye imágenes de cada uno de los integrantes vestidos de manera formal -->
-  
     <table>
-      <tr>
-          <td><img src="./imagenes/Adriana.jpeg" alt="Aguilar Morales Adriana" width="200"></td>
-          <td><img src="" alt="Cruz Cruz Karina Gabriela" width="225"></td>
-          <td><img src="" alt="Paredes Cruz Jabneel" width="225" height="300"></td>
-          <td><img src="" alt="Estrada Zuñiga Ian Donovan" width="200"></td>
-      </tr>
-      <tr>
-          <td> Aguilar Morales Adriana</td>
-          <td> Cruz Cruz Karina Gabriela</td>
-          <td> Paredes Cruz Jabneel</td>
-          <td>Estrada Zuñiga Ian Donovan</td>
-      </tr>
-      <tr>
-        <td>22011008@itsoeh.edu.mx</td>
-        <td>22011088@itsoeh.edu.mx</td>
-        <td>22011782@itsoeh.edu.mx</td>
-        <td>22011147@itsoeh.edu.mx</td>
-    </tr>
-  </table>
-
- 
+        <tr>
+            <td><img src="./imagenes/AdrianaFormal.jpeg" alt="Aguilar Morales Adriana"></td>
+            <td><img src="./imagenes/KarinaFormal.jpeg" alt="Cruz Cruz Karina Gabriela"></td>
+            <td><img src="./imagenes/JabneelFormal.jpeg" alt="Paredes Cruz Jabneel"></td>
+            <td><img src="./imagenes/IanFormal.jpeg" alt="Estrada Zuñiga Ian Donovan"></td>
+        </tr>
+        <tr>
+            <td>Aguilar Morales Adriana</td>
+            <td>Cruz Cruz Karina Gabriela</td>
+            <td>Paredes Cruz Jabneel</td>
+            <td>Estrada Zuñiga Ian Donovan</td>
+        </tr>
+        <tr>
+            <td>22011008@itsoeh.edu.mx</td>
+            <td>22011088@itsoeh.edu.mx</td>
+            <td>22011782@itsoeh.edu.mx</td>
+            <td>22011147@itsoeh.edu.mx</td>
+        </tr>
+    </table>
 
 </body>
 </html>
