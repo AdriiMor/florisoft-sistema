@@ -1,14 +1,8 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  td {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  table img { /* Selector específico para las imágenes dentro de la tabla */
-    width: 100px; /* Ajusta el tamaño de las imágenes según sea necesario */
-    height: auto;
-    border-radius: 50%; /* Para hacer las imágenes redondas */
-  }
+table img {
+    width: 10px; /* Ancho más pequeño */
+    height: 12px; /* Altura más pequeña */
+    object-fit: cover; /* Ajusta la imagen dentro del área sin deformarla */
+    border-radius: 50%; /* Mantiene las imágenes redondas */
+    display: block;
+    margin: 0 auto; /* Centra las imágenes */
+}
