@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos</title>
+</head>
+
+   <h1>Descripción de pertinencia de la arquitectura de la base de datos </h1>
+   <p> La arquitectura de la base de datos del Sistema de Gestión de Pedidos (SGP) ha sido diseñada de manera que garantice la organización, eficiencia, y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF, y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación de los mismos sean rápidas y eficientes.</p>
+
+    <h1> Organización y Claridad de los Datos (1NF, 2NF, 3NF) </h1>
+    <p>La base de datos está organizada en tablas que agrupan datos relacionados de manera lógica. Cada tabla tiene un propósito específico y está normalizada para eliminar redundancias y asegurar la integridad de los datos. La estructura sigue las tres formas normales de la siguiente manera: </p>
+     
+    <ul>
+        <li>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, dirección, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor. </li>
+        <li>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pedidos, el monto total del pedido y la fecha de entrega dependen del identificador único del pedido (PedidoID). </li>
+        <li>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del cliente y del pedido están separados, lo que evita duplicación y mantiene la consistencia. Un pedido está relacionado con un cliente a través de una clave foránea (ClienteID).</li>
+    </ul>
+
+    <h1>Separación de Responsabilidades por Tabla</h1>
+    <p>La estructura de la base de datos refleja una clara separación de responsabilidades y relaciones, lo que mejora la capacidad de expansión futura y facilita el mantenimiento:</p>
+
+    <ul>
+        <li> Clientes: Contiene información única de los clientes, como nombre, dirección y teléfono. Esto asegura que los datos de los clientes no se repitan y permite que cada cliente pueda tener múltiples pedidos.</li>
+        <li> Pedidos: Almacena la información básica de cada pedido, asociándolo con un cliente mediante una clave foránea. Esto asegura que cualquier modificación en los pedidos no afecte la tabla de clientes ni otros componentes.</li>
+        <li> </li>
+    </ul>
+    <li><a href="./../subsistemas/pedidos.html">[Pedidos]</a></li>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
