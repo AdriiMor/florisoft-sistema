@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base de Datos</title>
+    <title> Diseño de la base de datos del subsistema.</title>
+    <style>
+        body {
+            font-family: "Georgia", serif; /* Tipografía más formal */
+            margin: 20px;
+            line-height: 1.6; /* Mejor legibilidad */
+        }
+        h1 {
+            font-size: 20px; /* Tamaño más pequeño para h1 */
+            margin-bottom: 10px;
+            font-weight: bold; /* Negrita para resaltar títulos */
+        }
+        h2 {
+            font-size: 18px; /* Tamaño más pequeño para h2 */
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        h3 {
+            font-size: 16px; /* Tamaño más pequeño para h3 */
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 14px; /* Texto más pequeño en párrafos */
+            text-align: justify; /* Alineación justificada para un estilo formal */
+        }
+        ul, ol {
+            padding-left: 40px; /* Sangría en listas */
+            font-size: 14px; /* Tamaño más pequeño para las listas */
+        }
+        li {
+            margin-bottom: 5px; /* Espacio entre elementos de la lista */
+        }
+        a {
+            text-decoration: none; /* Sin subrayado en enlaces */
+            color: #0056b3; /* Color más formal para los enlaces */
+        }
+        a:hover {
+            text-decoration: underline; /* Subrayado al pasar el cursor */
+        }
+    </style>
 </head>
+
+<li><a href="./../subsistemas/pedidos.html">[Pedidos]</a></li>
+
+<img src="./../imagenes/Diagrama.jpeg" alt="" width="700">
 
    <h1>Descripción de pertinencia de la arquitectura de la base de datos </h1>
    <p> La arquitectura de la base de datos del Sistema de Gestión de Pedidos (SGP) ha sido diseñada de manera que garantice la organización, eficiencia, y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF, y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación de los mismos sean rápidas y eficientes.</p>
@@ -22,11 +66,51 @@
     <p>La estructura de la base de datos refleja una clara separación de responsabilidades y relaciones, lo que mejora la capacidad de expansión futura y facilita el mantenimiento:</p>
 
     <ul>
-        <li> Clientes: Contiene información única de los clientes, como nombre, dirección y teléfono. Esto asegura que los datos de los clientes no se repitan y permite que cada cliente pueda tener múltiples pedidos.</li>
-        <li> Pedidos: Almacena la información básica de cada pedido, asociándolo con un cliente mediante una clave foránea. Esto asegura que cualquier modificación en los pedidos no afecte la tabla de clientes ni otros componentes.</li>
-        <li> </li>
+        <li>Clientes: Contiene información única de los clientes, como nombre, dirección y teléfono. Esto asegura que los datos de los clientes no se repitan y permite que cada cliente pueda tener múltiples pedidos.</li>
+        <li>Pedidos: Almacena la información básica de cada pedido, asociándolo con un cliente mediante una clave foránea. Esto asegura que cualquier modificación en los pedidos no afecte la tabla de clientes ni otros componentes.</li>
+        <li>Productos: Define los productos disponibles en la floristería (flores, arreglos). Se asegura la flexibilidad para modificar el catálogo sin afectar el historial de pedidos.</li>
+        <li>DetallePedidos: Representa la relación muchos-a-muchos entre pedidos y productos. Permite que un pedido tenga múltiples productos y que un producto aparezca en varios pedidos.</li>    
+        <li>Personalización: Facilita la gestión de los mensajes "De" y "Para", almacenando esta información por separado y asociada a cada pedido.</li>
     </ul>
-    <li><a href="./../subsistemas/pedidos.html">[Pedidos]</a></li>
+
+    <h1>Relaciones Claras y Eficientes</h1>
+    <p>Las relaciones entre las tablas están claramente definidas usando claves primarias y foráneas, lo que facilita la consulta y actualización de los datos. Las relaciones 1
+        entre Clientes y Pedidos, así como entre Pedidos y DetallePedidos, son esenciales para reflejar el flujo natural del sistema:</p>
+
+        <ul>
+            <li> Un cliente puede tener múltiples pedidos (relación 1).</li>
+            <li> Un pedido puede contener múltiples productos a través de la tabla DetallePedidos.</li>
+            <li> Cada pedido está asociado con un solo registro de pago y una única personalización (relaciones 1:1).</li>
+        </ul>
+
+        <h1>Consistencia y Eliminación de Redundancias</h1>
+        <p>La arquitectura relacional asegura que no haya duplicación de datos. Por ejemplo, los detalles del cliente (como nombre o dirección) no se repiten en la tabla de pedidos, ya que la relación entre Pedidos y Clientes garantiza que toda la información del cliente esté centralizada en la tabla Clientes. Además, al separar los productos en la tabla Productos y asociarlos mediante DetallePedidos, se elimina la redundancia y se optimiza el almacenamiento y las consultas.</p>
+
+        <h1>Implementación de funcionalidaddes</h1>
+        <h2>Funcionalidades de la dueña de la floristería</h2>
+
+        <ul>
+            <li>Visualizar su lista de pedidos</li>
+            <p>La tabla Pedidos facilita la visualización de la lista completa de pedidos con los campos ID de pedido, Nombre del cliente (relacionado mediante la tabla Clientes), Estado de pedido, Fecha de pedido, Fecha de entrega, y Monto total. La dueña puede consultar fácilmente todos los pedidos y acceder a los detalles de cada uno.</p>
+        </ul>
+
+        <ul>
+            <li>Acceder a detalles específicos al seleccionar un pedido</li>
+            <p>Al seleccionar un pedido en particular, los detalles como Tipos de flores, Cantidades de cada tipo, y Personalización (si aplica) se extraen de las tablas DetallePedidos, Productos y Personalizacion, respectivamente. Esta estructura permite a la dueña acceder a la información completa de cada pedido de manera eficiente.</p>
+        </ul>
+
+        <ul>
+            <li>Visualizar los datos del cliente</li>
+            <P>A través de la relación entre la tabla Pedidos y Clientes, la dueña puede consultar la información del cliente: Nombre, Dirección de entrega, Teléfono, Referencia de entrega, así como los mensajes personalizados "De" y "Para" almacenados en la tabla Personalizacion.</P>
+        </ul>
+
+        <ul>
+            <li>Acceder a la información de pago</li>
+            <p>La tabla Pagos permite a la dueña consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Pedidos, la información de pago de cada pedido está bien organizada y accesible.</p>
+        </ul>
+
+
+
         
 
 
