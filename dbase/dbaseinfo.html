@@ -3,68 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Diseño de la base de datos del subsistema.</title>
+    <title>Diseño de la base de datos del subsistema</title>
     <style>
         body {
-            font-family: "Georgia", serif; /* Tipografía más formal */
+            font-family: "Georgia", serif; 
             margin: 20px;
-            line-height: 1.6; /* Mejor legibilidad */
+            line-height: 1.6; 
         }
         h1 {
-            font-size: 20px; /* Tamaño más pequeño para h1 */
+            font-size: 20px; 
             margin-bottom: 10px;
-            font-weight: bold; /* Negrita para resaltar títulos */
+            font-weight: bold; 
         }
         h2 {
-            font-size: 18px; /* Tamaño más pequeño para h2 */
+            font-size: 18px; 
             margin-bottom: 10px;
             font-weight: bold;
         }
         h3 {
-            font-size: 16px; /* Tamaño más pequeño para h3 */
+            font-size: 16px; 
             margin-bottom: 10px;
             font-weight: bold;
         }
         p {
-            font-size: 14px; /* Texto más pequeño en párrafos */
-            text-align: justify; /* Alineación justificada para un estilo formal */
+            font-size: 14px; 
+            text-align: justify; 
         }
         ul, ol {
-            padding-left: 40px; /* Sangría en listas */
-            font-size: 14px; /* Tamaño más pequeño para las listas */
+            padding-left: 40px; 
+            font-size: 14px; 
         }
         li {
-            margin-bottom: 5px; /* Espacio entre elementos de la lista */
+            margin-bottom: 5px; 
         }
         a {
-            text-decoration: none; /* Sin subrayado en enlaces */
-            color: #0056b3; /* Color más formal para los enlaces */
+            text-decoration: none; 
+            color: #0056b3; 
         }
         a:hover {
-            text-decoration: underline; /* Subrayado al pasar el cursor */
+            text-decoration: underline; 
         }
     </style>
 </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="./../subsistemas/pedidos.html">[Pedidos]</a></li>
+        </ul>
+    </nav>
 
-<li><a href="./../subsistemas/pedidos.html">[Pedidos]</a></li>
+    <img src="./../imagenes/DiagramaPedidos.jpeg" alt="Diagrama de Pedidos" width="700">
 
-<img src="./../imagenes/DiagramaPedidos.jpeg" alt="" width="700">
+    <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
+    <p>La arquitectura de la base de datos del Sistema de Gestión de Pedidos (SGP) ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF, y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación de los mismos sean rápidas y eficientes.</p>
 
-   <h1>Descripción de pertinencia de la arquitectura de la base de datos </h1>
-   <p> La arquitectura de la base de datos del Sistema de Gestión de Pedidos (SGP) ha sido diseñada de manera que garantice la organización, eficiencia, y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF, y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación de los mismos sean rápidas y eficientes.</p>
-
-    <h1> Organización y Claridad de los Datos (1NF, 2NF, 3NF) </h1>
-    <p>La base de datos está organizada en tablas que agrupan datos relacionados de manera lógica. Cada tabla tiene un propósito específico y está normalizada para eliminar redundancias y asegurar la integridad de los datos. La estructura sigue las tres formas normales de la siguiente manera: </p>
-     
+    <h1>Organización y Claridad de los Datos (1NF, 2NF, 3NF)</h1>
+    <p>La base de datos está organizada en tablas que agrupan datos relacionados de manera lógica. Cada tabla tiene un propósito específico y está normalizada para eliminar redundancias y asegurar la integridad de los datos. La estructura sigue las tres formas normales de la siguiente manera:</p>
     <ul>
-        <li>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, dirección, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor. </li>
-        <li>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pedidos, el monto total del pedido y la fecha de entrega dependen del identificador único del pedido (PedidoID). </li>
+        <li>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, dirección, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</li>
+        <li>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pedidos, el monto total del pedido y la fecha de entrega dependen del identificador único del pedido (PedidoID).</li>
         <li>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del cliente y del pedido están separados, lo que evita duplicación y mantiene la consistencia. Un pedido está relacionado con un cliente a través de una clave foránea (ClienteID).</li>
     </ul>
 
     <h1>Separación de Responsabilidades por Tabla</h1>
     <p>La estructura de la base de datos refleja una clara separación de responsabilidades y relaciones, lo que mejora la capacidad de expansión futura y facilita el mantenimiento:</p>
-
     <ul>
         <li>Clientes: Contiene información única de los clientes, como nombre, dirección y teléfono. Esto asegura que los datos de los clientes no se repitan y permite que cada cliente pueda tener múltiples pedidos.</li>
         <li>Pedidos: Almacena la información básica de cada pedido, asociándolo con un cliente mediante una clave foránea. Esto asegura que cualquier modificación en los pedidos no afecte la tabla de clientes ni otros componentes.</li>
@@ -74,160 +76,175 @@
     </ul>
 
     <h1>Relaciones Claras y Eficientes</h1>
-    <p>Las relaciones entre las tablas están claramente definidas usando claves primarias y foráneas, lo que facilita la consulta y actualización de los datos. Las relaciones 1
-        entre Clientes y Pedidos, así como entre Pedidos y DetallePedidos, son esenciales para reflejar el flujo natural del sistema:</p>
+    <p>Las relaciones entre las tablas están claramente definidas usando claves primarias y foráneas, lo que facilita la consulta y actualización de los datos. Las relaciones entre Clientes y Pedidos, así como entre Pedidos y DetallePedidos, son esenciales para reflejar el flujo natural del sistema:</p>
+    <ul>
+        <li>Un cliente puede tener múltiples pedidos (relación 1).</li>
+        <li>Un pedido puede contener múltiples productos a través de la tabla DetallePedidos.</li>
+        <li>Cada pedido está asociado con un solo registro de pago y una única personalización (relaciones 1:1).</li>
+    </ul>
 
-        <ul>
-            <li> Un cliente puede tener múltiples pedidos (relación 1).</li>
-            <li> Un pedido puede contener múltiples productos a través de la tabla DetallePedidos.</li>
-            <li> Cada pedido está asociado con un solo registro de pago y una única personalización (relaciones 1:1).</li>
-        </ul>
+    <h1>Consistencia y Eliminación de Redundancias</h1>
+    <p>La arquitectura relacional asegura que no haya duplicación de datos. Por ejemplo, los detalles del cliente (como nombre o dirección) no se repiten en la tabla de pedidos, ya que la relación entre Pedidos y Clientes garantiza que toda la información del cliente esté centralizada en la tabla Clientes. Además, al separar los productos en la tabla Productos y asociarlos mediante DetallePedidos, se elimina la redundancia y se optimiza el almacenamiento y las consultas.</p>
 
-        <h1>Consistencia y Eliminación de Redundancias</h1>
-        <p>La arquitectura relacional asegura que no haya duplicación de datos. Por ejemplo, los detalles del cliente (como nombre o dirección) no se repiten en la tabla de pedidos, ya que la relación entre Pedidos y Clientes garantiza que toda la información del cliente esté centralizada en la tabla Clientes. Además, al separar los productos en la tabla Productos y asociarlos mediante DetallePedidos, se elimina la redundancia y se optimiza el almacenamiento y las consultas.</p>
+    <h1>Implementación de Funcionalidades</h1>
+    <h2>Funcionalidades de la Dueña de la Floristería</h2>
+    <ul>
+        <li>Visualizar su lista de pedidos</li>
+        <p>La tabla Pedidos facilita la visualización de la lista completa de pedidos con los campos ID de pedido, Nombre del cliente (relacionado mediante la tabla Clientes), Estado de pedido, Fecha de pedido, Fecha de entrega y Monto total. La dueña puede consultar fácilmente todos los pedidos y acceder a los detalles de cada uno.</p>
+    </ul>
+    <ul>
+        <li>Acceder a detalles específicos al seleccionar un pedido</li>
+        <p>Al seleccionar un pedido en particular, los detalles como Tipos de flores, Cantidades de cada tipo y Personalización (si aplica) se extraen de las tablas DetallePedidos, Productos y Personalización, respectivamente. Esta estructura permite a la dueña acceder a la información completa de cada pedido de manera eficiente.</p>
+    </ul>
+    <ul>
+        <li>Visualizar los datos del cliente</li>
+        <p>A través de la relación entre la tabla Pedidos y Clientes, la dueña puede consultar la información del cliente: Nombre, Dirección de entrega, Teléfono, Referencia de entrega, así como los mensajes personalizados "De" y "Para" almacenados en la tabla Personalización.</p>
+    </ul>
+    <ul>
+        <li>Acceder a la información de pago</li>
+        <p>La tabla Pagos permite a la dueña consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Pedidos, la información de pago de cada pedido está bien organizada y accesible.</p>
+    </ul>
+    <ul>
+        <li>Modificar los pedidos</li>
+        <p>Los cambios en el estado del pedido (e.g., "En Proceso", "Entregado") pueden ser realizados directamente modificando el campo EstadoPedido en la tabla Pedidos. Además, la dueña puede cancelar un pedido, que será gestionado mediante la actualización o eliminación del pedido en la base de datos.</p>
+    </ul>
+    <ul>
+        <li>Ver su panel de estadísticas</li>
+        <p>Para las estadísticas de ventas, se pueden realizar consultas a la tabla Pedidos agrupadas por fechas (FechaPedido), lo que facilita la generación de gráficos de ventas por períodos (diarios, semanales, mensuales). Asimismo, las tendencias en métodos de pago se pueden generar a partir de la tabla Pagos.</p>
+    </ul>
+    <ul>
+        <li>Editar catálogo de productos</li>
+        <p>La tabla Productos permite a la dueña visualizar, añadir, editar o eliminar flores y arreglos del catálogo. Esta tabla está diseñada para gestionar los productos de manera independiente de los pedidos, lo que asegura que los cambios en el catálogo no afecten los registros históricos de los pedidos.</p>
+    </ul>
 
-        <h1>Implementación de funcionalidaddes</h1>
-        <h2>Funcionalidades de la dueña de la floristería</h2>
+    <h2>Funcionalidades del Cliente</h2>
+    <ul>
+        <li>Visualizar el catálogo</li>
+        <p>La tabla Productos permite a los clientes ver todos los productos disponibles en el catálogo, incluidos los ramos y arreglos florales. Los filtros (por precio, tema, popularidad) pueden implementarse mediante consultas a esta tabla.</p>
+    </ul>
+    <ul>
+        <li>Elaborar su propio ramo</li>
+        <p>El cliente puede personalizar un ramo seleccionando flores de la tabla Productos y agregándolas a su pedido a través de la tabla DetallePedidos. Esta tabla permite gestionar las cantidades y tipos de flores seleccionadas, asegurando que cada pedido personalizado esté registrado adecuadamente.</p>
+    </ul>
+    <ul>
+        <li>Visualizar detalles de entrega</li>
+        <p>Los detalles de entrega, como la dirección, teléfono y referencias para la entrega, se almacenan en la tabla Pedidos y Clientes. Esto permite que el cliente proporcione instrucciones específicas que serán recuperadas para la entrega.</p>
+    </ul>
+    <ul>
+        <li>Personalizar "De" y "Para"</li>
+        <p>La tabla Personalización permite a los clientes añadir mensajes personalizados en sus pedidos. Al estar vinculada con la tabla Pedidos, se asegura que cada mensaje esté asociado al pedido correspondiente y se pueda recuperar en cualquier momento.</p>
+    </ul>
+    <ul>
+        <li>Definir fecha y hora de entrega</li>
+        <p>Los campos FechaEntrega en la tabla Pedidos permiten al cliente seleccionar la fecha y hora deseada para la entrega, asegurando que el pedido se gestione de acuerdo con las preferencias del cliente.</p>
+    </ul>
+    <ul>
+        <li>Elegir método de pago</li>
+        <p>Los clientes pueden elegir entre tarjeta o transferencia bancaria como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado y su estado.</p>
+    </ul>
 
-        <ul>
-            <li>Visualizar su lista de pedidos</li>
-            <p>La tabla Pedidos facilita la visualización de la lista completa de pedidos con los campos ID de pedido, Nombre del cliente (relacionado mediante la tabla Clientes), Estado de pedido, Fecha de pedido, Fecha de entrega, y Monto total. La dueña puede consultar fácilmente todos los pedidos y acceder a los detalles de cada uno.</p>
-        </ul>
+    <h1>Código SQL para Construir las Tablas</h1>
+    <pre>
+        -- Crear tabla Clientes
+        CREATE TABLE Clientes (
+            ClienteID INT PRIMARY KEY IDENTITY(1,1),
+            NombreCliente VARCHAR(100) NOT NULL,
+            Direccion VARCHAR(255) NOT NULL,
+            Telefono VARCHAR(20) NOT NULL
+        );
 
-        <ul>
-            <li>Acceder a detalles específicos al seleccionar un pedido</li>
-            <p>Al seleccionar un pedido en particular, los detalles como Tipos de flores, Cantidades de cada tipo, y Personalización (si aplica) se extraen de las tablas DetallePedidos, Productos y Personalizacion, respectivamente. Esta estructura permite a la dueña acceder a la información completa de cada pedido de manera eficiente.</p>
-        </ul>
+        -- Crear tabla Pedidos
+        CREATE TABLE Pedidos (
+            PedidoID INT PRIMARY KEY IDENTITY(1,1),
+            ClienteID INT NOT NULL,
+            FechaPedido DATETIME NOT NULL,
+            FechaEntrega DATETIME NOT NULL,
+            EstadoPedido VARCHAR(50) NOT NULL,
+            MontoTotal DECIMAL(10, 2) NOT NULL,
+            FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+        );
 
-        <ul>
-            <li>Visualizar los datos del cliente</li>
-            <P>A través de la relación entre la tabla Pedidos y Clientes, la dueña puede consultar la información del cliente: Nombre, Dirección de entrega, Teléfono, Referencia de entrega, así como los mensajes personalizados "De" y "Para" almacenados en la tabla Personalizacion.</P>
-        </ul>
+        -- Crear tabla Productos
+        CREATE TABLE Productos (
+            ProductoID INT PRIMARY KEY IDENTITY(1,1),
+            NombreProducto VARCHAR(100) NOT NULL,
+            Descripcion TEXT,
+            Precio DECIMAL(10, 2) NOT NULL
+        );
 
-        <ul>
-            <li>Acceder a la información de pago</li>
-            <p>La tabla Pagos permite a la dueña consultar el método de pago (Tarjeta o Transferencia), los detalles de la tarjeta o comprobante, y el estado del pago (Completo, Pendiente, Fallido). Al estar relacionada directamente con la tabla Pedidos, la información de pago de cada pedido está bien organizada y accesible.</p>
-        </ul>
+        -- Crear tabla DetallePedidos
+        CREATE TABLE DetallePedidos (
+            DetalleID INT PRIMARY KEY IDENTITY(1,1),
+            PedidoID INT NOT NULL,
+            ProductoID INT NOT NULL,
+            Cantidad INT NOT NULL,
+            FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID),
+            FOREIGN KEY (ProductoID) REFERENCES Productos(ProductoID)
+        );
 
-        <ul>
-            <li>Modificar los pedidos</li>
-            <p>Los cambios en el estado del pedido (e.g., "En Proceso", "Entregado") pueden ser realizados directamente modificando el campo EstadoPedido en la tabla Pedidos. Además, la dueña puede cancelar un pedido, que será gestionado mediante la actualización o eliminación del pedido en la base de datos.</p>
-        </ul>
+        -- Crear tabla Pagos
+        CREATE TABLE Pagos (
+            PagoID INT PRIMARY KEY IDENTITY(1,1),
+            PedidoID INT NOT NULL,
+            MetodoPago VARCHAR(50) NOT NULL,
+            EstadoPago VARCHAR(50) NOT NULL,
+            NoTarjeta VARCHAR(16),
+            FechaExpiracion VARCHAR(5),
+            CVV VARCHAR(3),
+            Comprobante VARCHAR(255),
+            FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID)
+        );
 
-        <ul>
-            <li>Ver su panel de estadísticas</li>
-            <p>Para las estadísticas de ventas, se pueden realizar consultas a la tabla Pedidos agrupadas por fechas (FechaPedido), lo que facilita la generación de gráficos de ventas por períodos (diarios, semanales, mensuales). Asimismo, las tendencias en métodos de pago se pueden generar a partir de la tabla Pagos.</p>
-        </ul>
+        -- Crear tabla Personalizacion
+        CREATE TABLE Personalizacion (
+            PersonalizacionID INT PRIMARY KEY IDENTITY(1,1),
+            PedidoID INT NOT NULL,
+            De VARCHAR(100),
+            Para VARCHAR(100),
+            Mensaje TEXT,
+            FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID)
+        );
+    </pre>
 
-        <ul>
-            <li>Editar catálogo de productos</li>
-            <p>La tabla Productos permite a la dueña visualizar, añadir, editar o eliminar flores y arreglos del catálogo. Esta tabla está diseñada para gestionar los productos de manera independiente de los pedidos, lo que asegura que los cambios en el catálogo no afecten los registros históricos de los pedidos.</p>
-        </ul>
+    <h1>Registros en las Tablas de la Base de Datos</h1>
+    <pre>
+        -- Tabla Clientes
+        INSERT INTO Clientes (NombreCliente, Direccion, Telefono)
+        VALUES 
+            ('Axel Diaz', 'Calle Av Mexico', '771-7577553'),
+            ('Adriana Morales', 'Avenida 742', '56-38134531');
 
-        <h2>Funcionalidades del cliente</h2>
+        -- Tabla Productos
+        INSERT INTO Productos (NombreProducto, Descripcion, Precio)
+        VALUES 
+            ('Rosas Rojas', 'Ramo de 12 rosas rojas frescas', 100.00),
+            ('Lirios Blancos', 'Ramo de 10 lirios blancos perfumados', 80.00),
+            ('Tulipanes Amarillos', 'Ramo de 15 tulipanes amarillos vibrantes', 120.00);
 
-        <ul>
-            <li>Visualizar el catálogo</li>
-            <p>La tabla Productos permite a los clientes ver todos los productos disponibles en el catálogo, incluidos los ramos y arreglos florales. Los filtros (por precio, tema, popularidad) pueden implementarse mediante consultas a esta tabla.</p>
-        </ul>
+        -- Tabla Pedidos
+        INSERT INTO Pedidos (ClienteID, FechaPedido, FechaEntrega, EstadoPedido, MontoTotal)
+        VALUES 
+            (1, '2024-10-12', '2024-10-14', 'En Proceso', 220.00),
+            (2, '2024-10-12', '2024-10-15', 'Pendiente', 120.00);
 
-        <ul>
-            <li>Elaborar su propio ramo</li>
-            <p>El cliente puede personalizar un ramo seleccionando flores de la tabla Productos y agregándolas a su pedido a través de la tabla DetallePedidos. Esta tabla permite gestionar las cantidades y tipos de flores seleccionadas, asegurando que cada pedido personalizado esté registrado adecuadamente.</p>
-        </ul>
+        -- Tabla DetallePedidos
+        INSERT INTO DetallePedidos (PedidoID, ProductoID, Cantidad)
+        VALUES 
+            (1, 1, 1), 
+            (1, 2, 1), 
+            (2, 3, 1);
 
-        <ul>
-            <li>Visualizar detalles de entrega</li>
-            <p>Los detalles de entrega, como la dirección, teléfono, y referencias para la entrega, se almacenan en la tabla Pedidos y Clientes. Esto permite que el cliente proporcione instrucciones específicas que serán recuperadas para la entrega.</p>
-        </ul>
+        -- Tabla Pagos
+        INSERT INTO Pagos (PedidoID, MetodoPago, EstadoPago, NoTarjeta, FechaExpiracion, CVV, Comprobante)
+        VALUES 
+            (1, 'Tarjeta', 'Completo', '1234567812345678', '12/25', '123', NULL),
+            (2, 'Transferencia', 'Pendiente', NULL, NULL, NULL, 'Comprobante #1234567890');
 
-        <ul>
-            <li>Personalizar "De" y "Para"</li>
-            <p>La tabla Personalizacion permite a los clientes añadir mensajes personalizados en sus pedidos. Al estar vinculada con la tabla Pedidos, se asegura que cada mensaje esté asociado al pedido correspondiente y se pueda recuperar en cualquier momento.</p>
-        </ul>
-
-        <ul>
-            <li>Definir fecha y hora de entrega</li>
-            <p>Los campos FechaEntrega en la tabla Pedidos permiten al cliente seleccionar la fecha y hora deseada para la entrega, asegurando que el pedido se gestione de acuerdo con las preferencias del cliente.</p>
-        </ul>
-
-        <ul>
-            <li>Elegir método de pago</li>
-            <p>Los clientes pueden elegir entre tarjeta o transferencia bancaria como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado y su estado.</p>
-        </ul>
-
-        <h1>Código SQL para construir las tablas </h1>
-
--- Crear tabla Clientes<br>
-CREATE TABLE Clientes ( <br>
-    ClienteID INT PRIMARY KEY IDENTITY(1,1),<br>
-    NombreCliente VARCHAR(100) NOT NULL,<br>
-    Direccion VARCHAR(255) NOT NULL,<br>
-    Telefono VARCHAR(20) NOT NULL<br>
-);<br>
-
--- Crear tabla Pedidos<br>
-CREATE TABLE Pedidos (<br>
-    PedidoID INT PRIMARY KEY IDENTITY(1,1),<br>
-    ClienteID INT NOT NULL,<br>
-    FechaPedido DATETIME NOT NULL,<br>
-    FechaEntrega DATETIME NOT NULL,<br>
-    EstadoPedido VARCHAR(50) NOT NULL,<br>
-    MontoTotal DECIMAL(10, 2) NOT NULL,<br>
-    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID) -- Relaciona cada pedido con el cliente que lo realizó.<br>
-);<br>
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        -- Tabla Personalizacion
+        INSERT INTO Personalizacion (PedidoID, De, Para, Mensaje)
+        VALUES 
+            (1, 'Axel Diaz', 'Adriana Aguilar', 'Con amor en nuestro aniversario'),
+            (2, 'Adriana Morales', 'Jose Axel', 'Te amo con todo mi corazón');
+    </pre>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
