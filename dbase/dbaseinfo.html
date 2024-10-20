@@ -125,6 +125,13 @@
 
     <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
     <p>La arquitectura de la base de datos del Sistema de Gestión de Pedidos (SGP) ha sido diseñada de manera que garantice la organización, eficiencia y consistencia de los datos, aplicando las primeras tres formas normales (1NF, 2NF, y 3NF). La estructura de la base de datos sigue principios fundamentales de diseño relacional para asegurar que los datos sean precisos y que las operaciones de consulta y modificación de los mismos sean rápidas y eficientes.</p>
+    
+    <ul>
+        <li> Organización y Claridad de los Datos (1NF, 2NF, 3NF)</li>
+        <p>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, dirección, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</p>
+        <p>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pedidos, el monto total del pedido y la fecha de entrega dependen del identificador único del pedido (PedidoID).</p>
+        <p>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del cliente y del pedido están separados, lo que evita duplicación y mantiene la consistencia. Un pedido está relacionado con un cliente a través de una clave foránea (ClienteID).</p>
+    </ul>
 
     <h1>Funcionalidades de los Usuarios del subsistema</h1>
 
@@ -177,109 +184,18 @@
         <p>Los clientes pueden elegir entre tarjeta o transferencia bancaria como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado y su estado.</p>
     </ul>
 
-    <h1>Registros en las Tablas de la Base de Datos</h1>
+    <h1>Separación de Responsabilidades por Tabla</h1>
 
-    <pre>
-        -- Tabla Clientes
-        INSERT INTO Clientes (NombreCliente, Direccion, Telefono)
-        VALUES 
-            ('Axel Diaz', 'Calle Av Mexico', '771-7577553'),
-            ('Adriana Morales', 'Avenida 742', '56-38134531');
+    <ul>
+        <li>Clientes: Contiene información única de los clientes, como nombre, dirección y teléfono. Esto asegura que los datos de los clientes no se repitan y permite que cada cliente pueda tener múltiples pedidos.</li>
+        <li>Pedidos: Almacena la información básica de cada pedido, asociándolo con un cliente mediante una clave foránea. Esto asegura que cualquier modificación en los pedidos no afecte la tabla de clientes ni otros componentes.</li>
+        <li>Productos: Define los productos disponibles en la floristería (flores, arreglos). Se asegura la flexibilidad para modificar el catálogo sin afectar el historial de pedidos.</li>
+        <li>DetallePedidos: Representa la relación muchos-a-muchos entre pedidos y productos. Permite que un pedido tenga múltiples productos y que un producto aparezca en varios pedidos.</li>
+        <li>Pagos: Almacena los datos relacionados a los métodos y estados de pago, gestionando la información sensible de manera separada y segura.</li>
+        <li>Personalización: Facilita la gestión de los mensajes "De" y "Para", almacenando esta información por separado y asociada a cada pedido.</li>
+    </ul>
 
-        -- Tabla Productos
-        INSERT INTO Productos (NombreProducto, Descripcion, Precio)
-        VALUES 
-            ('Rosas Rojas', 'Ramo de 12 rosas rojas frescas', 100.00),
-            ('Lirios Blancos', 'Ramo de 10 lirios blancos perfumados', 80.00),
-            ('Tulipanes Amarillos', 'Ramo de 15 tulipanes amarillos vibrantes', 120.00);
-
-        -- Tabla Pedidos
-        INSERT INTO Pedidos (ClienteID, FechaPedido, FechaEntrega, EstadoPedido, MontoTotal)
-        VALUES 
-            (1, '2024-10-12', '2024-10-14', 'En Proceso', 220.00),
-            (2, '2024-10-12', '2024-10-15', 'Pendiente', 120.00);
-
-        -- Tabla DetallePedidos
-        INSERT INTO DetallePedidos (PedidoID, ProductoID, Cantidad)
-        VALUES 
-            (1, 1, 1), 
-            (1, 2, 1), 
-            (2, 3, 1);
-
-        -- Tabla Pagos
-        INSERT INTO Pagos (PedidoID, MetodoPago, EstadoPago, NoTarjeta, FechaExpiracion, CVV, Comprobante)
-        VALUES 
-            (1, 'Tarjeta', 'Completo', '1234567812345678', '12/25', '123', NULL),
-            (2, 'Transferencia', 'Pendiente', NULL, NULL, NULL, 'Comprobante #1234567890');
-
-        -- Tabla Personalizacion
-        INSERT INTO Personalizacion (PedidoID, De, Para, Mensaje)
-        VALUES 
-            (1, 'Axel Diaz', 'Adriana Aguilar', 'Con amor en nuestro aniversario'),
-            (2, 'Adriana Morales', 'Jose Axel', 'Te amo con todo mi corazón');
-    </pre>
-
-    <!-- Tabla interactiva para Clientes -->
-    <h2>Tabla Clientes</h2>
-    <table id="clientes">
-        <thead>
-            <tr>
-                <th>ClienteID</th>
-                <th>NombreCliente</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Axel Diaz</td>
-                <td>Calle Av Mexico</td>
-                <td>771-7577553</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Adriana Morales</td>
-                <td>Avenida 742</td>
-                <td>56-38134531</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Tabla interactiva para Productos -->
-    <h2>Tabla Productos</h2>
-    <table id="productos">
-        <thead>
-            <tr>
-                <th>ProductoID</th>
-                <th>NombreProducto</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Rosas Rojas</td>
-                <td>Ramo de 12 rosas rojas frescas</td>
-                <td>100.00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Lirios Blancos</td>
-                <td>Ramo de 10 lirios blancos perfumados</td>
-                <td>80.00</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Tulipanes Amarillos</td>
-                <td>Ramo de 15 tulipanes amarillos vibrantes</td>
-                <td>120.00</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h1>Código SQL para Construir las Tablas</h1>
+    <h1>Código SQL para construir las tablas con las llaves foraneas y su función</h1>
     <pre>
         -- Crear tabla Clientes
         CREATE TABLE Clientes (
@@ -342,18 +258,48 @@
         );
     </pre>
 
-    <script>
-        // Inicializar las tablas como interactivas con DataTables
-        $(document).ready(function() {
-            $('#clientes').DataTable();
-            $('#productos').DataTable();
-        });
-    </script>
+    <h1>Registros en las Tablas de la Base de Datos</h1>
 
-    <!-- Librerías para DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <pre>
+        -- Tabla Clientes
+        INSERT INTO Clientes (NombreCliente, Direccion, Telefono)
+        VALUES 
+            ('Axel Diaz', 'Calle Av Mexico', '771-7577553'),
+            ('Adriana Morales', 'Avenida 742', '56-38134531');
+
+        -- Tabla Productos
+        INSERT INTO Productos (NombreProducto, Descripcion, Precio)
+        VALUES 
+            ('Rosas Rojas', 'Ramo de 12 rosas rojas frescas', 100.00),
+            ('Lirios Blancos', 'Ramo de 10 lirios blancos perfumados', 80.00),
+            ('Tulipanes Amarillos', 'Ramo de 15 tulipanes amarillos vibrantes', 120.00);
+
+        -- Tabla Pedidos
+        INSERT INTO Pedidos (ClienteID, FechaPedido, FechaEntrega, EstadoPedido, MontoTotal)
+        VALUES 
+            (1, '2024-10-12', '2024-10-14', 'En Proceso', 220.00),
+            (2, '2024-10-12', '2024-10-15', 'Pendiente', 120.00);
+
+        -- Tabla DetallePedidos
+        INSERT INTO DetallePedidos (PedidoID, ProductoID, Cantidad)
+        VALUES 
+            (1, 1, 1), 
+            (1, 2, 1), 
+            (2, 3, 1);
+
+        -- Tabla Pagos
+        INSERT INTO Pagos (PedidoID, MetodoPago, EstadoPago, NoTarjeta, FechaExpiracion, CVV, Comprobante)
+        VALUES 
+            (1, 'Tarjeta', 'Completo', '1234567812345678', '12/25', '123', NULL),
+            (2, 'Transferencia', 'Pendiente', NULL, NULL, NULL, 'Comprobante #1234567890');
+
+        -- Tabla Personalizacion
+        INSERT INTO Personalizacion (PedidoID, De, Para, Mensaje)
+        VALUES 
+            (1, 'Axel Diaz', 'Adriana Aguilar', 'Con amor en nuestro aniversario'),
+            (2, 'Adriana Morales', 'Jose Axel', 'Te amo con todo mi corazón');
+    </pre>
+    
 
 </body>
 </html>
