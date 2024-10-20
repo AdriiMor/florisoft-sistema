@@ -6,39 +6,43 @@
     <title>Diseño de la base de datos del subsistema</title>
     <style>
         body {
-            font-family: "Georgia", serif;
-            background-color: #ffe6f2;
-            color: #5a1d57;
+            font-family: "Georgia", serif; /* Tipografía más formal */
+            background-color: #fdf5f7; /* Fondo suave rosado */
+            color: #333; /* Color del texto */
             margin: 20px;
-            line-height: 1.6;
+            line-height: 1.6; /* Mejor legibilidad */
         }
         h1, h2, h3 {
+            color: #b56576; /* Rosa oscuro para títulos */
             font-weight: bold;
             text-align: center;
-        }
-        h1 {
-            font-size: 22px;
+            border-bottom: 2px solid #f9c0c4; /* Línea suave rosada */
+            padding-bottom: 10px;
             margin-bottom: 10px;
         }
+        h1 {
+            font-size: 24px; /* Tamaño para h1 */
+            margin-bottom: 15px;
+        }
         h2 {
-            font-size: 20px;
+            font-size: 20px; /* Tamaño para h2 */
             margin-bottom: 10px;
         }
         h3 {
-            font-size: 18px;
+            font-size: 18px; /* Tamaño para h3 */
             margin-bottom: 10px;
         }
-        p {
-            font-size: 16px;
+        p, ul, ol {
+            font-size: 16px; /* Texto más pequeño */
             text-align: justify;
             margin-bottom: 20px;
         }
-        ul {
-            padding-left: 40px;
+        ul, ol {
+            padding-left: 40px; /* Sangría en listas */
             font-size: 16px;
         }
         li {
-            margin-bottom: 5px;
+            margin-bottom: 5px; /* Espacio entre elementos de lista */
         }
         nav ul {
             list-style-type: none;
@@ -52,32 +56,47 @@
         }
         nav ul li a {
             text-decoration: none;
-            background-color: #ff80b3;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            color: #fff; /* Color blanco en enlaces */
+            background-color: #f9c0c4; /* Fondo rosado claro */
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(182, 101, 118, 0.3); /* Sombra rosada suave */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
         }
         nav ul li a:hover {
-            background-color: #e60073;
+            background-color: #e99aa6; /* Fondo más oscuro en hover */
+            box-shadow: 0 6px 12px rgba(182, 101, 118, 0.5); /* Sombra más pronunciada */
         }
         table {
             width: 100%;
             margin-bottom: 20px;
             border-collapse: collapse;
-            background-color: #ffe6f2;
+            background-color: #fff0f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         th, td {
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 2px solid #ff80b3;
+            border-bottom: 1px solid #d084a2e9;
         }
         th {
-            background-color: #ff80b3;
+            background-color: #ff80b3; /* Fondo rosado para encabezados */
             color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        td {
+            font-size: 14px;
+        }
+        tr:nth-child(even) {
+            background-color: #ffe6f2; /* Color de fila alterna */
         }
         tr:hover {
-            background-color: #ffccdd;
+            background-color: #ffccdd; /* Color al pasar el mouse */
+            cursor: pointer;
         }
         pre {
             background-color: #fff0f5;
@@ -93,6 +112,7 @@
             border-radius: 10px;
         }
     </style>
+    
 </head>
 <body>
     <nav>
@@ -157,14 +177,107 @@
         <p>Los clientes pueden elegir entre tarjeta o transferencia bancaria como método de pago, que se registrará en la tabla Pagos. La arquitectura de esta tabla permite almacenar de manera segura los datos del método de pago seleccionado y su estado.</p>
     </ul>
 
+    <h1>Registros en las Tablas de la Base de Datos</h1>
 
-    <h1>Organización y Claridad de los Datos (1NF, 2NF, 3NF)</h1>
-    <p>La base de datos está organizada en tablas que agrupan datos relacionados de manera lógica. Cada tabla tiene un propósito específico y está normalizada para eliminar redundancias y asegurar la integridad de los datos. La estructura sigue las tres formas normales de la siguiente manera:</p>
-    <ul>
-        <li>1NF (Primera Forma Normal): Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, dirección, teléfono) se almacenan en campos individuales, garantizando que cada campo contenga un único valor.</li>
-        <li>2NF (Segunda Forma Normal): Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pedidos, el monto total del pedido y la fecha de entrega dependen del identificador único del pedido (PedidoID).</li>
-        <li>3NF (Tercera Forma Normal): No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, los datos del cliente y del pedido están separados, lo que evita duplicación y mantiene la consistencia. Un pedido está relacionado con un cliente a través de una clave foránea (ClienteID).</li>
-    </ul>
+    <pre>
+        -- Tabla Clientes
+        INSERT INTO Clientes (NombreCliente, Direccion, Telefono)
+        VALUES 
+            ('Axel Diaz', 'Calle Av Mexico', '771-7577553'),
+            ('Adriana Morales', 'Avenida 742', '56-38134531');
+
+        -- Tabla Productos
+        INSERT INTO Productos (NombreProducto, Descripcion, Precio)
+        VALUES 
+            ('Rosas Rojas', 'Ramo de 12 rosas rojas frescas', 100.00),
+            ('Lirios Blancos', 'Ramo de 10 lirios blancos perfumados', 80.00),
+            ('Tulipanes Amarillos', 'Ramo de 15 tulipanes amarillos vibrantes', 120.00);
+
+        -- Tabla Pedidos
+        INSERT INTO Pedidos (ClienteID, FechaPedido, FechaEntrega, EstadoPedido, MontoTotal)
+        VALUES 
+            (1, '2024-10-12', '2024-10-14', 'En Proceso', 220.00),
+            (2, '2024-10-12', '2024-10-15', 'Pendiente', 120.00);
+
+        -- Tabla DetallePedidos
+        INSERT INTO DetallePedidos (PedidoID, ProductoID, Cantidad)
+        VALUES 
+            (1, 1, 1), 
+            (1, 2, 1), 
+            (2, 3, 1);
+
+        -- Tabla Pagos
+        INSERT INTO Pagos (PedidoID, MetodoPago, EstadoPago, NoTarjeta, FechaExpiracion, CVV, Comprobante)
+        VALUES 
+            (1, 'Tarjeta', 'Completo', '1234567812345678', '12/25', '123', NULL),
+            (2, 'Transferencia', 'Pendiente', NULL, NULL, NULL, 'Comprobante #1234567890');
+
+        -- Tabla Personalizacion
+        INSERT INTO Personalizacion (PedidoID, De, Para, Mensaje)
+        VALUES 
+            (1, 'Axel Diaz', 'Adriana Aguilar', 'Con amor en nuestro aniversario'),
+            (2, 'Adriana Morales', 'Jose Axel', 'Te amo con todo mi corazón');
+    </pre>
+
+    <!-- Tabla interactiva para Clientes -->
+    <h2>Tabla Clientes</h2>
+    <table id="clientes">
+        <thead>
+            <tr>
+                <th>ClienteID</th>
+                <th>NombreCliente</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Axel Diaz</td>
+                <td>Calle Av Mexico</td>
+                <td>771-7577553</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Adriana Morales</td>
+                <td>Avenida 742</td>
+                <td>56-38134531</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabla interactiva para Productos -->
+    <h2>Tabla Productos</h2>
+    <table id="productos">
+        <thead>
+            <tr>
+                <th>ProductoID</th>
+                <th>NombreProducto</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Rosas Rojas</td>
+                <td>Ramo de 12 rosas rojas frescas</td>
+                <td>100.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lirios Blancos</td>
+                <td>Ramo de 10 lirios blancos perfumados</td>
+                <td>80.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Tulipanes Amarillos</td>
+                <td>Ramo de 15 tulipanes amarillos vibrantes</td>
+                <td>120.00</td>
+            </tr>
+        </tbody>
+    </table>
 
     <h1>Código SQL para Construir las Tablas</h1>
     <pre>
@@ -229,45 +342,18 @@
         );
     </pre>
 
-    <h1>Registros en las Tablas de la Base de Datos</h1>
-    <pre>
-        -- Tabla Clientes
-        INSERT INTO Clientes (NombreCliente, Direccion, Telefono)
-        VALUES 
-            ('Axel Diaz', 'Calle Av Mexico', '771-7577553'),
-            ('Adriana Morales', 'Avenida 742', '56-38134531');
+    <script>
+        // Inicializar las tablas como interactivas con DataTables
+        $(document).ready(function() {
+            $('#clientes').DataTable();
+            $('#productos').DataTable();
+        });
+    </script>
 
-        -- Tabla Productos
-        INSERT INTO Productos (NombreProducto, Descripcion, Precio)
-        VALUES 
-            ('Rosas Rojas', 'Ramo de 12 rosas rojas frescas', 100.00),
-            ('Lirios Blancos', 'Ramo de 10 lirios blancos perfumados', 80.00),
-            ('Tulipanes Amarillos', 'Ramo de 15 tulipanes amarillos vibrantes', 120.00);
+    <!-- Librerías para DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-        -- Tabla Pedidos
-        INSERT INTO Pedidos (ClienteID, FechaPedido, FechaEntrega, EstadoPedido, MontoTotal)
-        VALUES 
-            (1, '2024-10-12', '2024-10-14', 'En Proceso', 220.00),
-            (2, '2024-10-12', '2024-10-15', 'Pendiente', 120.00);
-
-        -- Tabla DetallePedidos
-        INSERT INTO DetallePedidos (PedidoID, ProductoID, Cantidad)
-        VALUES 
-            (1, 1, 1), 
-            (1, 2, 1), 
-            (2, 3, 1);
-
-        -- Tabla Pagos
-        INSERT INTO Pagos (PedidoID, MetodoPago, EstadoPago, NoTarjeta, FechaExpiracion, CVV, Comprobante)
-        VALUES 
-            (1, 'Tarjeta', 'Completo', '1234567812345678', '12/25', '123', NULL),
-            (2, 'Transferencia', 'Pendiente', NULL, NULL, NULL, 'Comprobante #1234567890');
-
-        -- Tabla Personalizacion
-        INSERT INTO Personalizacion (PedidoID, De, Para, Mensaje)
-        VALUES 
-            (1, 'Axel Diaz', 'Adriana Aguilar', 'Con amor en nuestro aniversario'),
-            (2, 'Adriana Morales', 'Jose Axel', 'Te amo con todo mi corazón');
-    </pre>
 </body>
 </html>
