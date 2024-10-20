@@ -3,106 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florisoft</title>
+    <title>Sistema de Gestión de Pedidos (SGP)</title>
     <style>
         body {
-            font-family: "Georgia", serif; /* Fuente más formal */
-            margin: 20px;
-            line-height: 1.6; /* Mejor legibilidad */
+            font-family: Arial, sans-serif;
+            background-color: #fdf5f7; /* Fondo suave rosado */
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
-        h1 {
-            font-size: 22px; /* Títulos un poco más pequeños */
-            margin-bottom: 10px;
-            font-weight: bold; /* Negrita para resaltar títulos */
+
+        h1, h2 {
+            color: #b56576; /* Rosa oscuro */
+            text-align: center; /* Alineación centrada para los títulos */
+            border-bottom: 2px solid #f9c0c4; /* Línea suave rosada */
+            padding-bottom: 10px;
+            font-size: 24px;
         }
+
         p {
-            text-align: justify; /* Alineación justificada para estilo formal */
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            color: #b56576;
+            font-weight: bold;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 20px;
-            font-size: 14px; /* Texto más pequeño */
         }
-        ul {
-            list-style-type: disc; /* Estilo de viñeta formal */
-            padding-left: 40px;
-            font-size: 14px; /* Texto más pequeño */
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Bordes redondeados */
         }
-        li {
-            margin-bottom: 5px;
-        }
-        a {
-            text-decoration: none;
-            color: #0056b3; /* Color más formal para enlaces */
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        table {
-            width: 100%;
-            text-align: center;
+
+        .team-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             margin-top: 20px;
         }
-        table img {
-            width: 150px; /* Tamaño más pequeño para las imágenes */
-            height: auto;
-            border-radius: 50%; /* Para hacer las imágenes redondas */
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Hace la imagen ovalada */
+            object-fit: cover; /* Asegura que la imagen mantenga su proporción */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
-        td {
-            padding: 10px;
-            font-size: 14px; /* Texto más pequeño en la tabla */
+
+        .team-member {
+            text-align: center;
+        }
+
+        /* Estilo de los botones como lista */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f9c0c4; /* Botones rosados claros */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(182, 101, 118, 0.3); /* Sombra en rosado suave */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            background-color: #e99aa6; /* Color rosado más oscuro al pasar el ratón */
+            box-shadow: 0 6px 12px rgba(182, 101, 118, 0.5); /* Sombra más pronunciada al pasar el ratón */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        footer a {
+            color: #b56576;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Sistema de Gestión de Pedidos (SGP)</h1>
+        <p>El <span class="highlight">Sistema de Gestión de Pedidos (SGP)</span> busca optimizar el proceso de compra y entrega de flores, haciéndolo más eficiente y agradable tanto para los clientes como para la floristería.</p>
 
-    <h1>Sistema de Gestión de Pedidos (SGP)</h1>
-    <p>El Sistema de Gestión de Pedidos (SGP) busca optimizar el proceso de compra y entrega de flores, haciéndolo más eficiente y agradable tanto para los clientes como para la floristería.</p>
+        <h1>Problemática del proyecto</h1>
+        <p>La floristería enfrenta problemas al gestionar los pedidos de los clientes. Muchas veces hay confusiones en la toma de pedidos, lo que lleva a errores y demoras. Además, los clientes quieren personalizar sus ramos, pero no siempre pueden hacerlo fácilmente. También hay dificultades para mantener un control adecuado del inventario, lo que puede resultar en falta de productos o sobreventas. La comunicación sobre las entregas no es clara, lo que provoca retrasos y problemas con las direcciones. Por último, la falta de opciones de pago cómodas puede desanimar a los clientes. Estos problemas afectan la satisfacción del cliente y la eficiencia del negocio.</p>
 
-    <h1>Problemática del proyecto</h1>
-    <p>La floristería enfrenta problemas al gestionar los pedidos de los clientes. Muchas veces hay confusiones en la toma de pedidos, lo que lleva a errores y demoras. Además, los clientes quieren personalizar sus ramos, pero no siempre pueden hacerlo fácilmente. También hay dificultades para mantener un control adecuado del inventario, lo que puede resultar en falta de productos o sobreventas. La comunicación sobre las entregas no es clara, lo que provoca retrasos y problemas con las direcciones. Por último, la falta de opciones de pago cómodas puede desanimar a los clientes. Estos problemas afectan la satisfacción del cliente y la eficiencia del negocio.</p>
+        <h1>Objetivo del proyecto</h1>
+        <p>Desarrollar un sistema integral que optimice la gestión de pedidos en la floristería, mejorando la experiencia del cliente mediante la personalización de ramos, un control eficiente del inventario, una comunicación clara sobre las entregas y opciones de pago seguras. Esto aumentará la satisfacción del cliente y la eficiencia operativa del negocio.</p>
 
-    <h1>Objetivo del proyecto</h1>
-    <p>Desarrollar un sistema integral que optimice la gestión de pedidos en la floristería, mejorando la experiencia del cliente mediante la personalización de ramos, un control eficiente del inventario, una comunicación clara sobre las entregas y opciones de pago seguras. Esto aumentará la satisfacción del cliente y la eficiencia operativa del negocio.</p>
+        <h1>Subsistemas del proyecto</h1>
+        <p>El desarrollo del sistema principal de la florería se realizó a través de un análisis de requisitos con los interesados, identificando funcionalidades clave como gestión de pedidos, inventario, diseño floral, ventas y distribución.</p>
 
-    <h1>Subsistemas del proyecto</h1>
-    <p>El desarrollo del sistema principal de la florería se realizó a través de un análisis de requisitos con los interesados, identificando funcionalidades clave como gestión de pedidos, inventario, diseño floral, ventas y distribución.</p>
+        <!-- Imagen centrada -->
+        <h2>Diagrama de Subsistemas</h2>
+        <div class="image-container">
+            <img src="./imagenes/Subsistemas.png" alt="Diagrama de Subsistemas" width="700">
+        </div>
 
-    <img src="./imagenes/Subsistemas.png" alt="" width="700">
+        <!-- Lista de botones alineados a la izquierda con sombreado rosa -->
+        <h2>Acceso a Subsistemas</h2>
+        <ul>
+            <li><a href="./subsistemas/pedidos.html">Pedidos</a></li>
+            <li><a href="./subsistemas/proveedores.html">Proveedores</a></li>
+            <li><a href="./subsistemas/catalogo.html">Catálogo</a></li>
+            <li><a href="./subsistemas/inventario.html">Inventario</a></li>
+            <li><a href="./subsistemas/clientes.html">Clientes</a></li>
+            <li><a href="./subsistemas/ventas.html">Ventas</a></li>
+            <li><a href="./subsistemas/marketing.html">Marketing</a></li>
+            <li><a href="./subsistemas/personal.html">Personal</a></li>
+            <li><a href="./subsistemas/entregas.html">Entregas</a></li>
+        </ul>
 
+        <h2>Equipo de Desarrollo</h2>
 
-    <ul>
-        <li><a href="./subsistemas/pedidos.html">Pedidos</a></li>
-        <li><a href="./subsistemas/proveedores.html">Proveedores</a></li>
-        <li><a href="./subsistemas/catalogo.html">Catálogo</a></li>
-        <li><a href="./subsistemas/inventario.html">Inventario</a></li>
-        <li><a href="./subsistemas/clientes.html">Clientes</a></li>
-        <li><a href="./subsistemas/ventas.html">Ventas</a></li>
-        <li><a href="./subsistemas/marketing.html">Marketing</a></li>
-        <li><a href="./subsistemas/personal.html">Personal</a></li>
-        <li><a href="./subsistemas/entregas.html">Entregas</a></li>
-        <li><a href="./dbase/dbaseinfo.html">Diseño de la base de datos del subsistema</a></li>
-    </ul>
-
-    <h1>Miembros del proyecto</h1>
-    <!-- La sección Miembros del proyecto incluye imágenes de cada uno de los integrantes vestidos de manera formal -->
-    <table>
-        <tr>
-            <td><img src="./imagenes/AdrianaFormal.jpeg" alt="Aguilar Morales Adriana"></td>
-            <td><img src="./imagenes/KarinaFormal.jpeg" alt="Cruz Cruz Karina Gabriela"></td>
-            <td><img src="./imagenes/JabneelFormal.jpeg" alt="Paredes Cruz Jabneel"></td>
-            <td><img src="./imagenes/IanFormal.jpeg" alt="Estrada Zuñiga Ian Donovan"></td>
-        </tr>
-        <tr>
-            <td>Aguilar Morales Adriana</td>
-            <td>Cruz Cruz Karina Gabriela</td>
-            <td>Paredes Cruz Jabneel</td>
-            <td>Estrada Zuñiga Ian Donovan</td>
-        </tr>
-        <tr>
-            <td>22011008@itsoeh.edu.mx</td>
-            <td>22011088@itsoeh.edu.mx</td>
-            <td>22011782@itsoeh.edu.mx</td>
-            <td>22011147@itsoeh.edu.mx</td>
-        </tr>
-    </table>
-
+        <!-- Contenedor de imágenes de los miembros del equipo -->
+        <div class="team-container">
+            <div class="team-member">
+                <img src="./imagenes/AdrianaFormal.jpeg" alt="Aguilar Morales Adriana">
+                <p>Aguilar Morales Adriana</p>
+            </div>
+            <div class="team-member">
+                <img src="./imagenes/JabneelFormal.jpeg" alt="Paredes Cruz Jabneel">
+                <p>Paredes Cruz Jabneel</p>
+            </div>
+            <div class="team-member">
+                <img src="./imagenes/KarinaFormal.jpeg" alt="Cruz Cruz Karina Gabriela">
+                <p>Cruz Cruz Karina Gabriela</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="./imagenes/IanFormal.jpeg" alt="Estrada Zuñiga Ian Donovan">
+            <p>Estrada Zuñiga Ian Donovan</p>
+        </div>
+    </div>
 </body>
 </html>
