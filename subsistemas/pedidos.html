@@ -8,50 +8,60 @@
         body {
             font-family: "Georgia", serif; /* Tipografía más formal */
             margin: 20px;
+            background-color: #fdf5f7; /* Fondo suave rosado */
+            color: #333;
             line-height: 1.6; /* Mejor legibilidad */
         }
-        h1 {
-            font-size: 20px; /* Tamaño más pequeño para h1 */
+        h1, h2, h3 {
+            color: #b56576; /* Rosa oscuro para títulos */
+            font-weight: bold;
+            border-bottom: 2px solid #f9c0c4; /* Línea suave rosada */
+            padding-bottom: 10px;
             margin-bottom: 10px;
-            font-weight: bold; /* Negrita para resaltar títulos */
+        }
+        h1 {
+            font-size: 20px; /* Tamaño para h1 */
         }
         h2 {
-            font-size: 18px; /* Tamaño más pequeño para h2 */
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 18px; /* Tamaño para h2 */
         }
         h3 {
-            font-size: 16px; /* Tamaño más pequeño para h3 */
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 16px; /* Tamaño para h3 */
         }
-        p {
-            font-size: 14px; /* Texto más pequeño en párrafos */
-            text-align: justify; /* Alineación justificada para un estilo formal */
+        p, ul, ol {
+            font-size: 14px; /* Texto más pequeño */
+            text-align: justify;
         }
         ul, ol {
             padding-left: 40px; /* Sangría en listas */
-            font-size: 14px; /* Tamaño más pequeño para las listas */
         }
         li {
-            margin-bottom: 5px; /* Espacio entre elementos de la lista */
+            margin-bottom: 5px; /* Espacio entre elementos de lista */
         }
         a {
-            text-decoration: none; /* Sin subrayado en enlaces */
-            color: #0056b3; /* Color más formal para los enlaces */
+            text-decoration: none;
+            color: #fff; /* Color blanco en enlaces */
+            background-color: #f9c0c4; /* Fondo rosado claro */
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(182, 101, 118, 0.3); /* Sombra rosada suave */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline; /* Subrayado al pasar el cursor */
+            background-color: #e99aa6; /* Fondo más oscuro en hover */
+            box-shadow: 0 6px 12px rgba(182, 101, 118, 0.5); /* Sombra más pronunciada */
         }
     </style>
 </head>
 <body>
 
+    <!-- Menú de navegación con botones -->
     <ul>
         <li><a href="./../index.html">Principal</a></li>
         <li><a href="./../dbase/dbaseinfo.html">Diseño de la base de datos del subsistema</a></li>
     </ul>
-
 
     <h1>Sistema de pedidos</h1>
     <p>Aumentar la tasa de finalización de pedidos en línea en un 20% durante los próximos 6 meses, asegurando que al menos el 90% de los clientes completen el proceso de personalización y pago sin abandonos.</p>
@@ -108,68 +118,4 @@
 
     <h2>Ver su panel de estadísticas</h2>
     <ol>
-        <li>Visualizar gráficos de ventas por período (diario, semanal, mensual).</li>
-        <li>Visualizar tendencias en métodos de pago utilizados.</li>
-    </ol>
-
-    <h2>Editar catálogo de productos</h2>
-    <ol>
-        <li>Visualizar y editar el catálogo de flores y arreglos disponibles.</li>
-        <li>Añadir nuevas flores o arreglos al catálogo.</li>
-        <li>Ajustar precios o descripciones de productos existentes.</li>
-    </ol>
-
-    <h3>Requerimientos del cliente</h3>
-    <p>El cliente debe ser capaz de:</p>
-    <h2>Visualizar el catálogo</h2>
-    <ol>
-        <li>Visualización completa de ramos, arreglos florales y otros productos disponibles.</li>
-    </ol>
-
-    <h2>Filtrar catálogo</h2>
-    <ol>
-        <li>Por precio: Ordenar o filtrar los productos por rangos de precios.</li>
-        <li>Por tema: Filtrar según ocasiones especiales (cumpleaños, aniversarios, condolencias, etc.).</li>
-        <li>Por popularidad: Ordenar los productos más comprados o mejor valorados por otros clientes.</li>
-    </ol>
-
-    <h2>Elaborar su propio ramo</h2>
-    <ol>
-        <li>Opción para crear un ramo personalizado desde cero.</li>
-        <li>Seleccionar las flores disponibles para agregar al ramo.</li>
-        <li>Especificar la cantidad de flores de cada tipo en el ramo.</li>
-        <li>Eliminar un tipo de flor previamente agregado.</li>
-        <li>Ajustar el diseño o la disposición de las flores según las preferencias del cliente.</li>
-    </ol>
-
-    <h2>Visualizar detalles de entrega</h2>
-    <ol>
-        <li>Campo para ingresar la dirección exacta a donde se enviará el ramo.</li>
-        <li>Instrucciones especiales para la entrega (ejemplo: "Edificio azul, departamento 301").</li>
-        <li>Teléfono de contacto del destinatario o remitente para coordinar la entrega.</li>
-    </ol>
-
-    <h2>Personalizar "De" y "Para"</h2>
-    <ol>
-        <li>De: Nombre del remitente (quien envía el ramo).</li>
-        <li>Para: Nombre del destinatario (quien recibe el ramo).</li>
-    </ol>
-
-    <h2>Definir fecha y hora de entrega</h2>
-    <ol>
-        <li>Selección de la fecha deseada para la entrega.</li>
-        <li>Elección de una hora específica para la entrega del pedido.</li>
-    </ol>
-
-    <h2>Elegir método de pago</h2>
-    <ol>
-        <li>Tarjeta (Número de tarjeta, Cuenta bancaria, Fecha de vencimiento, CVV).</li>
-        <li>Transferencia (Opción para cargar el comprobante de la transferencia bancaria).</li>
-    </ol>
-
-    <h1>Responsable del subsistema</h1>
-    <ul>
-        <li>Adriana Aguilar Morales (22011008@itsoeh.edu.mx)</li>    
-    </ul>
-</body>
-</html>
+        <li>Visualizar gráficos de ventas por período (
